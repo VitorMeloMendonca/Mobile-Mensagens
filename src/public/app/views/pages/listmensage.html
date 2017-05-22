@@ -1,0 +1,21 @@
+﻿<div class="container" ng-controller="ListMensagesController">
+    <div class="form-group">
+        <label class="control-label" for="exampleInputEmail">Category: </label>
+        <select class="form-control" ng-model="mensage.mensageData.category">
+            <option value="" selected>Choose</option>
+            <option ng-repeat="item in categories">{{item}}</option>
+        </select>
+    </div>
+    <div class="list-group">
+        <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">List of Mensages</h4>
+        </a>
+        <a href="#" class="list-group-item" ng-repeat="item in mensages | filter: mensage.mensageData.category">
+            <strong>Text: </strong> {{item.text}}
+            <br>
+            <strong>Category:</strong> {{item.category}}
+            <i class="glyphicon glyphicon-pencil pull-right" ng-click="Edit(item)"></i>
+            <i class="glyphicon glyphicon-remove pull-right" style="padding-right: inherit" ng-click="Remove(item._id)"></i>
+        </a>
+    </div>
+</div>

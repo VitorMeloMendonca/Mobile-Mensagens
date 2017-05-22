@@ -1,0 +1,19 @@
+{
+  "name": "vmm-solutions.mensagens.api",
+  "version": "0.0.0",
+  "description": "vmmSolutions.Mensagens.Api",
+  "main": "app.js",
+  "author": {
+    "name": "vmendonca",
+    "email": ""
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^7.0.1",
+    "mongoose": "^4.5.0",
+    "morgan": "^1.7.0",
+    "toastr": "^2.1.2"
+  }
+}

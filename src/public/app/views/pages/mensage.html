@@ -1,0 +1,48 @@
+﻿<div class="container" ng-controller="MensageController">
+
+    <div class="form-group">
+        <label class="control-label" for="exampleInputEmail">Categória: </label>
+        <select class="form-control" ng-model="mensageData.category">
+            <option value="" select>Escolha a categória</option>
+            <option ng-repeat="item in categories">{{item}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="exampleInputEmail">Author: </label>
+        <input type="text" class="form-control" id="author" placeholder="Informe o autor da mensagem..." ng-model="mensageData.author" />
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="exampleInputEmail">Texto: </label>
+        <textarea type="text" class="form-control" id="text" placeholder="Informe uma mensagem... " ng-model="mensageData.text"></textarea>
+    </div>
+    <div class="btn">
+        <button class="btn btn-success" ng-click="Save()">Salvar</button>
+    </div>
+    <div class="btn">
+        <button class="btn btn-info" ng-click="Clean()">Limpar</button>
+    </div>
+    <br /><br />
+    <div class="form-group">
+        <label class="control-label" for="exampleInputEmail">Filtro categória: </label>
+        <select class="form-control" ng-model="mensageData.categoryFilter">
+            <option value="" selected>Escolha a categória</option>
+            <option ng-repeat="item in categories">{{item}}</option>
+        </select>
+    </div>
+    <div class="list-group">
+        <a class="list-group-item active">
+            <h4 class="list-group-item-heading">Lista de Mensagens</h4>
+        </a>
+        <a class="list-group-item" ng-repeat="msg in mensages | filter: mensageData.categoryFilter">
+            <strong>Categória:</strong> {{msg.category}}
+            <br>
+            <strong>Texto: </strong> {{msg.text}}
+            <br>
+            <strong>Autor:</strong> {{msg.author}}
+            <i class="glyphicon glyphicon glyphicon-play pull-right" title="Habilitar" style="padding-right: inherit" ng-click="Able(msg, $index)" ng-if="!msg.isActive" ng-show="role == 'admin'"></i>
+            <i class="glyphicon glyphicon glyphicon-pause pull-right" title="Desabilitar" style="padding-right: inherit" ng-click="Disable(msg, $index)" ng-if="msg.isActive" ng-show="role == 'admin'"></i>
+            <i class="glyphicon glyphicon-pencil pull-right" style="padding-right: inherit" ng-click="Edit(msg, $index)" ng-show="role == 'admin' || msg.idUser == user._id"></i>
+            <i class="glyphicon glyphicon-remove pull-right" style="padding-right: inherit" ng-click="Remove(msg, $index)" ng-show="role == 'admin' || msg.idUser == user._id"></i>
+        </a>
+    </div>
+</div>
